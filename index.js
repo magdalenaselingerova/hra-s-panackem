@@ -19,3 +19,55 @@ function kolize(a, b) {
 		|| b.y + b.vyska < a.y));
 }
 */
+
+const panacek = {
+
+	x: 50,
+	y: 200,
+	width: 64,
+	height: 70,
+	element: document.querySelector('#panacek')
+
+};
+
+place();
+
+document.addEventListener('keydown', move);
+
+function move(event) {
+
+	if (event.code === 'ArrowRight') {
+		panacek.element.src = 'images/panacek-vpravo.png';
+		panacek.x += 10;
+		if (panacek.x + panacek.width > window.innerWidth) {
+			panacek.x = window.innerWidth - panacek.width;
+		}
+	} else if (event.code === 'ArrowLeft') {
+		panacek.element.src = 'images/panacek-vlevo.png';
+		panacek.x -= 10;
+		if (panacek.x < 0) {
+			panacek.x = 0;
+		}
+	} else if (event.code === 'ArrowUp') {
+		panacek.element.src = 'images/panacek-nahoru.png';
+		panacek.y -= 10;
+		if (panacek.y < 0) {
+			panacek.y = 0;
+		}
+	} else if (event.code === 'ArrowDown') {
+		panacek.element.src = 'images/panacek-dolu.png';
+		panacek.y += 10;
+		if (panacek.y + panacek.height > window.innerHeight) {
+			panacek.y = window.innerHeight - panacek.height;
+		}
+	} place();
+
+}
+
+function place() {
+
+	panacek.element.style.left = `${panacek.x}px`;
+	panacek.element.style.top = `${panacek.y}px`;
+
+}
+
